@@ -704,15 +704,16 @@ async function loadDemo() {
       skipEmptyLines: true
     });
 
+    // Update this mapping to match your CSV headers exactly!
     const mapping = {
-      date: "Date",
-      revenue: "Revenue",
-      region: "Region",
-      district: "District",
-      category: "Category",
-      product: "Product",
-      customer: "Customer",
-      units: "Units"
+      date: "date",             // changed from "Date"
+      revenue: "revenue",       // changed from "Revenue"
+      region: "region",         // changed from "Region"
+      district: "district",     // changed from "District"
+      category: "category",     // changed from "Category"
+      product: "product",       // changed from "Product"
+      customer: "customer_id",  // changed from "Customer"
+      units: "units"            // changed from "Units"
     };
 
     state.rawRows = parsed.data;
