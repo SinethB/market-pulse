@@ -326,43 +326,164 @@ function renderKPIs() {
 }
 
 /* ---------------------------------------------------
-   DISTRICT VIEW
+   DISTRICT MAP (Sri Lanka choropleth)
 --------------------------------------------------- */
 
-function renderMap() {
-  const box = $("districtMap");
-  box.innerHTML = "";
+// Districts whose spelling in uploaded data commonly differs from the
+// map's official path names, keyed by the map's cleanKey().
+const DISTRICT_NAME_ALIASES = {
+  moneragala: "monaragala"
+};
 
-  if (!state.schema.district) {
-    $("mapNote").textContent = "District column not mapped";
-    box.innerHTML = `
-      <div class="insight" style="grid-column:1/-1">
-        <span class="tag">GEOGRAPHY UNAVAILABLE</span>
-        <strong>No District column mapped</strong>
-        <p>The dashboard continues to work, but district-level analysis requires a District field.</p>
+let districtSvgPromise = null;
+
+function ensureDistrictSvg() {
+  if (!districtSvgPromise) {
+    districtSvgPromise = fetch("./assets/sri-lanka-map.svg")
+      .then(response => response.ok ? response.text() : Promise.reject(new Error("map fetch failed")))
+      .then(svgMarkup => {
+        $("districtMap").innerHTML = svgMarkup;
+        const svg = $("districtMap").querySelector("svg");
+        svg?.querySelectorAll(".district-path").forEach(path => {
+          path.dataset.key = cleanKey(path.dataset.district);
+        });
+        wireDistrictHoverSync();
+      })
+      .catch(() => {
+        $("districtMap").innerHTML = "";
+      });
+  }
+  return districtSvgPromise;
+}
+
+function wireDistrictHoverSync() {
+  const svg = $("districtMap").querySelector("svg");
+  const list = $("districtList");
+  if (!svg || !list) return;
+
+  const setActive = (key, active) => {
+    svg.querySelector(`.district-path[data-key="${key}"]`)?.classList.toggle("is-active", active);
+    list.querySelector(`.district-row[data-key="${key}"]`)?.classList.toggle("is-active", active);
+  };
+
+  svg.addEventListener("mouseover", event => {
+    const path = event.target.closest(".district-path");
+    if (path) setActive(path.dataset.key, true);
+  });
+  svg.addEventListener("mouseout", event => {
+    const path = event.target.closest(".district-path");
+    if (path) setActive(path.dataset.key, false);
+  });
+
+  list.addEventListener("mouseover", event => {
+    const row = event.target.closest(".district-row");
+    if (row) setActive(row.dataset.key, true);
+  });
+  list.addEventListener("mouseout", event => {
+    const row = event.target.closest(".district-row");
+    if (row) setActive(row.dataset.key, false);
+  });
+}
+
+function paintDistrictMap() {
+  const svg = $("districtMap").querySelector("svg");
+  const list = $("districtList");
+  const legend = $("mapLegend");
+  if (!svg || !list) return;
+
+  const sums = groupSum(state.filteredRows, "district");
+  const paths = [...svg.querySelectorAll(".district-path")];
+  const pathKeys = new Set(paths.map(path => path.dataset.key));
+
+  const valueByKey = new Map();
+  Object.entries(sums).forEach(([name, value]) => {
+    const key = cleanKey(name);
+    const resolvedKey = pathKeys.has(key) ? key
+      : pathKeys.has(DISTRICT_NAME_ALIASES[key]) ? DISTRICT_NAME_ALIASES[key]
+      : Object.keys(DISTRICT_NAME_ALIASES).find(alias => DISTRICT_NAME_ALIASES[alias] === key) || key;
+    valueByKey.set(resolvedKey, (valueByKey.get(resolvedKey) || 0) + value);
+  });
+
+  const matched = paths
+    .map(path => [path, valueByKey.get(path.dataset.key) || 0])
+    .filter(([, value]) => value > 0);
+
+  const max = matched.reduce((top, [, value]) => Math.max(top, value), 0) || 1;
+
+  paths.forEach(path => {
+    const value = valueByKey.get(path.dataset.key) || 0;
+    path.querySelector("title")?.remove();
+    const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    title.textContent = value
+      ? `${path.dataset.district}: Rs. ${fmtMoney(value)}`
+      : `${path.dataset.district}: No data`;
+    path.appendChild(title);
+
+    if (value > 0) {
+      path.classList.remove("no-data");
+      path.style.fill = `rgba(183, 243, 74, ${(.15 + .65 * (value / max)).toFixed(2)})`;
+    } else {
+      path.classList.add("no-data");
+      path.style.fill = "";
+    }
+  });
+
+  legend.innerHTML = matched.length
+    ? `<span>Low</span><span class="legend-bar"></span><span>High</span>`
+    : "";
+
+  if (!matched.length) {
+    list.innerHTML = `
+      <div class="insight">
+        <span class="tag">GEOGRAPHY</span>
+        <strong>No matching districts</strong>
+        <p>None of the mapped District values match a Sri Lankan district name.</p>
       </div>
     `;
     return;
   }
 
-  $("mapNote").textContent = "District contribution";
-  const districts = Object.entries(groupSum(state.filteredRows, "district"))
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 20);
+  const ranked = matched.sort((a, b) => b[1] - a[1]);
+  const listMax = ranked[0][1];
 
-  const max = districts[0]?.[1] || 1;
+  list.innerHTML = ranked.map(([path, value], index) => `
+    <div class="district-row" data-key="${path.dataset.key}">
+      <span class="rank">${index + 1}</span>
+      <span class="name-bar">
+        <span class="name">${escapeHtml(path.dataset.district)}</span>
+        <span class="bar-bg"><span class="bar-fill" style="width:${(value / listMax * 100).toFixed(1)}%"></span></span>
+      </span>
+      <span class="value">Rs. ${fmtMoney(value)}</span>
+    </div>
+  `).join("");
+}
 
-  districts.forEach(([name, value]) => {
-    const cell = document.createElement("div");
-    cell.className = "district-cell";
-    const alpha = .15 + .65 * (value / max);
-    cell.style.background = `rgba(185,243,106,${alpha})`;
-    cell.innerHTML = `
-      <strong>${escapeHtml(name)}</strong>
-      <span>Rs. ${fmtMoney(value)}</span>
+function renderMap() {
+  const list = $("districtList");
+  const legend = $("mapLegend");
+
+  if (!state.schema.district) {
+    $("mapNote").textContent = "District column not mapped";
+    legend.innerHTML = "";
+    list.innerHTML = `
+      <div class="insight">
+        <span class="tag">GEOGRAPHY UNAVAILABLE</span>
+        <strong>No District column mapped</strong>
+        <p>The dashboard continues to work, but district-level analysis requires a District field.</p>
+      </div>
     `;
-    box.appendChild(cell);
-  });
+    ensureDistrictSvg().then(() => {
+      $("districtMap").querySelectorAll(".district-path").forEach(path => {
+        path.classList.add("no-data");
+        path.style.fill = "";
+        path.querySelector("title")?.remove();
+      });
+    });
+    return;
+  }
+
+  $("mapNote").textContent = "District contribution";
+  ensureDistrictSvg().then(paintDistrictMap);
 }
 
 /* ---------------------------------------------------
