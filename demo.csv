@@ -1,0 +1,271 @@
+date,region,category,product,customer_id,revenue,order_id
+1/5/2024,Western,Electronics,Wireless Earbuds,C001,12500,ORD1001
+1/7/2024,Central,Home,Ceramic Dinner Set,C002,8400,ORD1002
+1/9/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C003,2100,ORD1003
+1/12/2024,Western,Electronics,Bluetooth Speaker,C001,9800,ORD1004
+1/15/2024,Northern,Home,Cotton Bedsheet,C004,5600,ORD1005
+1/18/2024,Western,Lifestyle,Leather Wallet,C005,4200,ORD1006
+1/22/2024,Central,Electronics,Power Bank 20000mAh,C002,6900,ORD1007
+1/25/2024,Southern,Home,Coconut Shell Bowls,C006,3300,ORD1008
+1/28/2024,Western,Electronics,Smart Watch,C007,18500,ORD1009
+2/2/2024,Northern,Lifestyle,Handloom Scarf,C004,3800,ORD1010
+2/5/2024,Western,Home,Ceylon Tea Set,C001,7400,ORD1011
+2/8/2024,Central,Electronics,Wireless Earbuds,C008,11900,ORD1012
+2/12/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C003,2400,ORD1013
+2/15/2024,Western,Electronics,Bluetooth Speaker,C005,10200,ORD1014
+2/19/2024,Northern,Home,Cotton Bedsheet,C009,5900,ORD1015
+2/22/2024,Western,Lifestyle,Leather Wallet,C001,4500,ORD1016
+2/26/2024,Central,Electronics,Power Bank 20000mAh,C002,7100,ORD1017
+3/1/2024,Southern,Home,Coconut Shell Bowls,C006,3500,ORD1018
+3/5/2024,Western,Electronics,Smart Watch,C010,19200,ORD1019
+3/9/2024,Northern,Lifestyle,Handloom Scarf,C004,4100,ORD1020
+3/13/2024,Western,Home,Ceylon Tea Set,C011,7900,ORD1021
+3/17/2024,Central,Electronics,Wireless Earbuds,C008,12300,ORD1022
+3/21/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C003,2600,ORD1023
+3/25/2024,Western,Electronics,Bluetooth Speaker,C005,10800,ORD1024
+3/29/2024,Northern,Home,Cotton Bedsheet,C009,6200,ORD1025
+4/3/2024,Western,Lifestyle,Leather Wallet,C012,4800,ORD1026
+4/7/2024,Central,Electronics,Power Bank 20000mAh,C002,7400,ORD1027
+4/11/2024,Southern,Home,Coconut Shell Bowls,C006,3700,ORD1028
+4/15/2024,Western,Electronics,Smart Watch,C010,20100,ORD1029
+4/19/2024,Northern,Lifestyle,Handloom Scarf,C004,4400,ORD1030
+4/23/2024,Western,Home,Ceylon Tea Set,C011,8300,ORD1031
+4/27/2024,Central,Electronics,Wireless Earbuds,C013,12800,ORD1032
+5/2/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C014,2800,ORD1033
+5/6/2024,Western,Electronics,Bluetooth Speaker,C005,11200,ORD1034
+5/10/2024,Northern,Home,Cotton Bedsheet,C009,6500,ORD1035
+5/14/2024,Western,Lifestyle,Leather Wallet,C012,5100,ORD1036
+5/18/2024,Central,Electronics,Power Bank 20000mAh,C015,7700,ORD1037
+5/22/2024,Southern,Home,Coconut Shell Bowls,C006,3900,ORD1038
+5/26/2024,Western,Electronics,Smart Watch,C010,21000,ORD1039
+5/30/2024,Northern,Lifestyle,Handloom Scarf,C016,4700,ORD1040
+6/4/2024,Western,Home,Ceylon Tea Set,C011,8700,ORD1041
+6/8/2024,Central,Electronics,Wireless Earbuds,C013,13200,ORD1042
+6/12/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C014,3000,ORD1043
+6/16/2024,Western,Electronics,Bluetooth Speaker,C017,11700,ORD1044
+6/20/2024,Northern,Home,Cotton Bedsheet,C009,6800,ORD1045
+6/24/2024,Western,Lifestyle,Leather Wallet,C012,5400,ORD1046
+6/28/2024,Central,Electronics,Power Bank 20000mAh,C015,8000,ORD1047
+7/3/2024,Southern,Home,Coconut Shell Bowls,C018,4100,ORD1048
+7/7/2024,Western,Electronics,Smart Watch,C010,22000,ORD1049
+7/11/2024,Northern,Lifestyle,Handloom Scarf,C016,5000,ORD1050
+7/15/2024,Western,Home,Ceylon Tea Set,C011,9100,ORD1051
+7/19/2024,Central,Electronics,Wireless Earbuds,C013,13700,ORD1052
+7/23/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C014,3200,ORD1053
+7/27/2024,Western,Electronics,Bluetooth Speaker,C017,12200,ORD1054
+8/1/2024,Northern,Home,Cotton Bedsheet,C019,7100,ORD1055
+8/5/2024,Western,Lifestyle,Leather Wallet,C012,5700,ORD1056
+8/9/2024,Central,Electronics,Power Bank 20000mAh,C015,8300,ORD1057
+8/13/2024,Southern,Home,Coconut Shell Bowls,C018,4300,ORD1058
+8/17/2024,Western,Electronics,Smart Watch,C010,23000,ORD1059
+8/21/2024,Northern,Lifestyle,Handloom Scarf,C016,5300,ORD1060
+8/25/2024,Western,Home,Ceylon Tea Set,C020,9500,ORD1061
+8/29/2024,Central,Electronics,Wireless Earbuds,C013,14200,ORD1062
+9/2/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C014,3400,ORD1063
+9/6/2024,Western,Electronics,Bluetooth Speaker,C017,12700,ORD1064
+9/10/2024,Northern,Home,Cotton Bedsheet,C019,7400,ORD1065
+9/14/2024,Western,Lifestyle,Leather Wallet,C021,6000,ORD1066
+9/18/2024,Central,Electronics,Power Bank 20000mAh,C015,8600,ORD1067
+9/22/2024,Southern,Home,Coconut Shell Bowls,C018,4500,ORD1068
+9/26/2024,Western,Electronics,Smart Watch,C010,24000,ORD1069
+9/30/2024,Northern,Lifestyle,Handloom Scarf,C016,5600,ORD1070
+10/4/2024,Western,Home,Ceylon Tea Set,C020,9900,ORD1071
+10/8/2024,Central,Electronics,Wireless Earbuds,C022,14700,ORD1072
+10/12/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C014,3600,ORD1073
+10/16/2024,Western,Electronics,Bluetooth Speaker,C017,13200,ORD1074
+10/20/2024,Northern,Home,Cotton Bedsheet,C019,7700,ORD1075
+10/24/2024,Western,Lifestyle,Leather Wallet,C021,6300,ORD1076
+10/28/2024,Central,Electronics,Power Bank 20000mAh,C022,8900,ORD1077
+11/1/2024,Southern,Home,Coconut Shell Bowls,C018,4700,ORD1078
+11/5/2024,Western,Electronics,Smart Watch,C023,25000,ORD1079
+11/9/2024,Northern,Lifestyle,Handloom Scarf,C016,5900,ORD1080
+11/13/2024,Western,Home,Ceylon Tea Set,C020,10300,ORD1081
+11/17/2024,Central,Electronics,Wireless Earbuds,C022,15200,ORD1082
+11/21/2024,Southern,Lifestyle,Ayurvedic Soap Pack,C024,3800,ORD1083
+11/25/2024,Western,Electronics,Bluetooth Speaker,C017,13700,ORD1084
+11/29/2024,Northern,Home,Cotton Bedsheet,C019,8000,ORD1085
+12/3/2024,Western,Lifestyle,Leather Wallet,C021,6600,ORD1086
+12/7/2024,Central,Electronics,Power Bank 20000mAh,C022,9200,ORD1087
+12/11/2024,Southern,Home,Coconut Shell Bowls,C024,4900,ORD1088
+12/15/2024,Western,Electronics,Smart Watch,C023,26000,ORD1089
+12/19/2024,Northern,Lifestyle,Handloom Scarf,C025,6200,ORD1090
+12/23/2024,Western,Home,Ceylon Tea Set,C020,10700,ORD1091
+12/27/2024,Central,Electronics,Wireless Earbuds,C022,15700,ORD1092
+1/4/2025,Western,Electronics,Smart Watch,C001,27000,ORD1093
+1/8/2025,Central,Home,Ceramic Dinner Set,C002,9800,ORD1094
+1/12/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C003,4200,ORD1095
+1/16/2025,Western,Electronics,Bluetooth Speaker,C005,14500,ORD1096
+1/20/2025,Northern,Home,Cotton Bedsheet,C004,8500,ORD1097
+1/24/2025,Western,Lifestyle,Leather Wallet,C012,7000,ORD1098
+1/28/2025,Central,Electronics,Power Bank 20000mAh,C008,9800,ORD1099
+2/2/2025,Southern,Home,Coconut Shell Bowls,C006,5200,ORD1100
+2/6/2025,Western,Electronics,Wireless Earbuds,C001,16500,ORD1101
+2/10/2025,Northern,Lifestyle,Handloom Scarf,C004,6800,ORD1102
+2/14/2025,Western,Home,Ceylon Tea Set,C011,11200,ORD1103
+2/18/2025,Central,Electronics,Smart Watch,C008,24500,ORD1104
+2/22/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C014,4500,ORD1105
+2/26/2025,Western,Electronics,Bluetooth Speaker,C005,15100,ORD1106
+3/2/2025,Northern,Home,Cotton Bedsheet,C009,8900,ORD1107
+3/6/2025,Western,Lifestyle,Leather Wallet,C012,7400,ORD1108
+3/10/2025,Central,Electronics,Power Bank 20000mAh,C015,10300,ORD1109
+3/14/2025,Southern,Home,Coconut Shell Bowls,C018,5500,ORD1110
+3/18/2025,Western,Electronics,Smart Watch,C010,28500,ORD1111
+3/22/2025,Northern,Lifestyle,Handloom Scarf,C016,7200,ORD1112
+3/26/2025,Western,Home,Ceylon Tea Set,C020,11800,ORD1113
+3/30/2025,Central,Electronics,Wireless Earbuds,C013,17200,ORD1114
+4/4/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C014,4800,ORD1115
+4/8/2025,Western,Electronics,Bluetooth Speaker,C017,15800,ORD1116
+4/12/2025,Northern,Home,Cotton Bedsheet,C019,9300,ORD1117
+4/16/2025,Western,Lifestyle,Leather Wallet,C021,7800,ORD1118
+4/20/2025,Central,Electronics,Power Bank 20000mAh,C015,10800,ORD1119
+4/24/2025,Southern,Home,Coconut Shell Bowls,C018,5800,ORD1120
+4/28/2025,Western,Electronics,Smart Watch,C023,29800,ORD1121
+5/3/2025,Northern,Lifestyle,Handloom Scarf,C016,7600,ORD1122
+5/7/2025,Western,Home,Ceylon Tea Set,C020,12400,ORD1123
+5/11/2025,Central,Electronics,Wireless Earbuds,C013,18000,ORD1124
+5/15/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C024,5100,ORD1125
+5/19/2025,Western,Electronics,Bluetooth Speaker,C017,16500,ORD1126
+5/23/2025,Northern,Home,Cotton Bedsheet,C019,9700,ORD1127
+5/27/2025,Western,Lifestyle,Leather Wallet,C021,8200,ORD1128
+5/31/2025,Central,Electronics,Power Bank 20000mAh,C022,11300,ORD1129
+6/4/2025,Southern,Home,Coconut Shell Bowls,C018,6100,ORD1130
+6/8/2025,Western,Electronics,Smart Watch,C023,31200,ORD1131
+6/12/2025,Northern,Lifestyle,Handloom Scarf,C025,8000,ORD1132
+6/16/2025,Western,Home,Ceylon Tea Set,C020,13000,ORD1133
+6/20/2025,Central,Electronics,Wireless Earbuds,C013,18800,ORD1134
+6/24/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C024,5400,ORD1135
+6/28/2025,Western,Electronics,Bluetooth Speaker,C017,17200,ORD1136
+7/3/2025,Northern,Home,Cotton Bedsheet,C019,10100,ORD1137
+7/7/2025,Western,Lifestyle,Leather Wallet,C021,8600,ORD1138
+7/11/2025,Central,Electronics,Power Bank 20000mAh,C022,11800,ORD1139
+7/15/2025,Southern,Home,Coconut Shell Bowls,C026,6400,ORD1140
+7/19/2025,Western,Electronics,Smart Watch,C023,32600,ORD1141
+7/23/2025,Northern,Lifestyle,Handloom Scarf,C025,8400,ORD1142
+7/27/2025,Western,Home,Ceylon Tea Set,C027,13600,ORD1143
+8/1/2025,Central,Electronics,Wireless Earbuds,C013,19600,ORD1144
+8/5/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C024,5700,ORD1145
+8/9/2025,Western,Electronics,Bluetooth Speaker,C017,17900,ORD1146
+8/13/2025,Northern,Home,Cotton Bedsheet,C028,10500,ORD1147
+8/17/2025,Western,Lifestyle,Leather Wallet,C021,9000,ORD1148
+8/21/2025,Central,Electronics,Power Bank 20000mAh,C022,12300,ORD1149
+8/25/2025,Southern,Home,Coconut Shell Bowls,C026,6700,ORD1150
+8/29/2025,Western,Electronics,Smart Watch,C023,34000,ORD1151
+9/2/2025,Northern,Lifestyle,Handloom Scarf,C025,8800,ORD1152
+9/6/2025,Western,Home,Ceylon Tea Set,C027,14200,ORD1153
+9/10/2025,Central,Electronics,Wireless Earbuds,C029,20400,ORD1154
+9/14/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C024,6000,ORD1155
+9/18/2025,Western,Electronics,Bluetooth Speaker,C030,18600,ORD1156
+9/22/2025,Northern,Home,Cotton Bedsheet,C028,10900,ORD1157
+9/26/2025,Western,Lifestyle,Leather Wallet,C021,9400,ORD1158
+9/30/2025,Central,Electronics,Power Bank 20000mAh,C029,12800,ORD1159
+10/4/2025,Southern,Home,Coconut Shell Bowls,C026,7000,ORD1160
+10/8/2025,Western,Electronics,Smart Watch,C023,35400,ORD1161
+10/12/2025,Northern,Lifestyle,Handloom Scarf,C025,9200,ORD1162
+10/16/2025,Western,Home,Ceylon Tea Set,C027,14800,ORD1163
+10/20/2025,Central,Electronics,Wireless Earbuds,C029,21200,ORD1164
+10/24/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C031,6300,ORD1165
+10/28/2025,Western,Electronics,Bluetooth Speaker,C030,19300,ORD1166
+11/1/2025,Northern,Home,Cotton Bedsheet,C028,11300,ORD1167
+11/5/2025,Western,Lifestyle,Leather Wallet,C021,9800,ORD1168
+11/9/2025,Central,Electronics,Power Bank 20000mAh,C029,13300,ORD1169
+11/13/2025,Southern,Home,Coconut Shell Bowls,C026,7300,ORD1170
+11/17/2025,Western,Electronics,Smart Watch,C032,36800,ORD1171
+11/21/2025,Northern,Lifestyle,Handloom Scarf,C025,9600,ORD1172
+11/25/2025,Western,Home,Ceylon Tea Set,C027,15400,ORD1173
+11/29/2025,Central,Electronics,Wireless Earbuds,C029,22000,ORD1174
+12/3/2025,Southern,Lifestyle,Ayurvedic Soap Pack,C031,6600,ORD1175
+12/7/2025,Western,Electronics,Bluetooth Speaker,C030,20000,ORD1176
+12/11/2025,Northern,Home,Cotton Bedsheet,C028,11700,ORD1177
+12/15/2025,Western,Lifestyle,Leather Wallet,C021,10200,ORD1178
+12/19/2025,Central,Electronics,Power Bank 20000mAh,C029,13800,ORD1179
+12/23/2025,Southern,Home,Coconut Shell Bowls,C026,7600,ORD1180
+12/27/2025,Western,Electronics,Smart Watch,C032,38200,ORD1181
+1/5/2026,Western,Electronics,Wireless Earbuds,C001,22500,ORD1182
+1/9/2026,Central,Home,Ceramic Dinner Set,C002,12400,ORD1183
+1/13/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C003,6900,ORD1184
+1/17/2026,Western,Electronics,Bluetooth Speaker,C005,20800,ORD1185
+1/21/2026,Northern,Home,Cotton Bedsheet,C004,12100,ORD1186
+1/25/2026,Western,Lifestyle,Leather Wallet,C012,10600,ORD1187
+1/29/2026,Central,Electronics,Power Bank 20000mAh,C008,14300,ORD1188
+2/3/2026,Southern,Home,Coconut Shell Bowls,C026,7900,ORD1189
+2/7/2026,Western,Electronics,Smart Watch,C023,39600,ORD1190
+2/11/2026,Northern,Lifestyle,Handloom Scarf,C025,10400,ORD1191
+2/15/2026,Western,Home,Ceylon Tea Set,C027,16600,ORD1192
+2/19/2026,Central,Electronics,Wireless Earbuds,C029,23600,ORD1193
+2/23/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,7200,ORD1194
+2/27/2026,Western,Electronics,Bluetooth Speaker,C030,21500,ORD1195
+3/3/2026,Northern,Home,Cotton Bedsheet,C028,12500,ORD1196
+3/7/2026,Western,Lifestyle,Leather Wallet,C021,11000,ORD1197
+3/11/2026,Central,Electronics,Power Bank 20000mAh,C029,14800,ORD1198
+3/15/2026,Southern,Home,Coconut Shell Bowls,C026,8200,ORD1199
+3/19/2026,Western,Electronics,Smart Watch,C032,41000,ORD1200
+3/23/2026,Northern,Lifestyle,Handloom Scarf,C025,10800,ORD1201
+3/27/2026,Western,Home,Ceylon Tea Set,C027,17200,ORD1202
+3/31/2026,Central,Electronics,Wireless Earbuds,C029,24400,ORD1203
+4/4/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,7500,ORD1204
+4/8/2026,Western,Electronics,Bluetooth Speaker,C030,22200,ORD1205
+4/12/2026,Northern,Home,Cotton Bedsheet,C028,12900,ORD1206
+4/16/2026,Western,Lifestyle,Leather Wallet,C021,11400,ORD1207
+4/20/2026,Central,Electronics,Power Bank 20000mAh,C029,15300,ORD1208
+4/24/2026,Southern,Home,Coconut Shell Bowls,C026,8500,ORD1209
+4/28/2026,Western,Electronics,Smart Watch,C032,42400,ORD1210
+5/3/2026,Northern,Lifestyle,Handloom Scarf,C025,11200,ORD1211
+5/7/2026,Western,Home,Ceylon Tea Set,C027,17800,ORD1212
+5/11/2026,Central,Electronics,Wireless Earbuds,C029,25200,ORD1213
+5/15/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,7800,ORD1214
+5/19/2026,Western,Electronics,Bluetooth Speaker,C030,22900,ORD1215
+5/23/2026,Northern,Home,Cotton Bedsheet,C028,13300,ORD1216
+5/27/2026,Western,Lifestyle,Leather Wallet,C021,11800,ORD1217
+5/31/2026,Central,Electronics,Power Bank 20000mAh,C029,15800,ORD1218
+6/4/2026,Southern,Home,Coconut Shell Bowls,C026,8800,ORD1219
+6/8/2026,Western,Electronics,Smart Watch,C032,43800,ORD1220
+6/12/2026,Northern,Lifestyle,Handloom Scarf,C033,11600,ORD1221
+6/16/2026,Western,Home,Ceylon Tea Set,C027,18400,ORD1222
+6/20/2026,Central,Electronics,Wireless Earbuds,C029,26000,ORD1223
+6/24/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,8100,ORD1224
+6/28/2026,Western,Electronics,Bluetooth Speaker,C030,23600,ORD1225
+7/3/2026,Northern,Home,Cotton Bedsheet,C028,13700,ORD1226
+7/7/2026,Western,Lifestyle,Leather Wallet,C034,12200,ORD1227
+7/11/2026,Central,Electronics,Power Bank 20000mAh,C029,16300,ORD1228
+7/15/2026,Southern,Home,Coconut Shell Bowls,C026,9100,ORD1229
+7/19/2026,Western,Electronics,Smart Watch,C032,45200,ORD1230
+7/23/2026,Northern,Lifestyle,Handloom Scarf,C033,12000,ORD1231
+7/27/2026,Western,Home,Ceylon Tea Set,C027,19000,ORD1232
+8/1/2026,Central,Electronics,Wireless Earbuds,C029,26800,ORD1233
+8/5/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,8400,ORD1234
+8/9/2026,Western,Electronics,Bluetooth Speaker,C030,24300,ORD1235
+8/13/2026,Northern,Home,Cotton Bedsheet,C035,14100,ORD1236
+8/17/2026,Western,Lifestyle,Leather Wallet,C034,12600,ORD1237
+8/21/2026,Central,Electronics,Power Bank 20000mAh,C029,16800,ORD1238
+8/25/2026,Southern,Home,Coconut Shell Bowls,C026,9400,ORD1239
+8/29/2026,Western,Electronics,Smart Watch,C032,46600,ORD1240
+9/2/2026,Northern,Lifestyle,Handloom Scarf,C033,12400,ORD1241
+9/6/2026,Western,Home,Ceylon Tea Set,C036,19600,ORD1242
+9/10/2026,Central,Electronics,Wireless Earbuds,C037,27600,ORD1243
+9/14/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,8700,ORD1244
+9/18/2026,Western,Electronics,Bluetooth Speaker,C030,25000,ORD1245
+9/22/2026,Northern,Home,Cotton Bedsheet,C035,14500,ORD1246
+9/26/2026,Western,Lifestyle,Leather Wallet,C034,13000,ORD1247
+9/30/2026,Central,Electronics,Power Bank 20000mAh,C037,17300,ORD1248
+10/4/2026,Southern,Home,Coconut Shell Bowls,C026,9700,ORD1249
+10/8/2026,Western,Electronics,Smart Watch,C032,48000,ORD1250
+10/12/2026,Northern,Lifestyle,Handloom Scarf,C033,12800,ORD1251
+10/16/2026,Western,Home,Ceylon Tea Set,C036,20200,ORD1252
+10/20/2026,Central,Electronics,Wireless Earbuds,C037,28400,ORD1253
+10/24/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C031,9000,ORD1254
+10/28/2026,Western,Electronics,Bluetooth Speaker,C038,25700,ORD1255
+11/1/2026,Northern,Home,Cotton Bedsheet,C035,14900,ORD1256
+11/5/2026,Western,Lifestyle,Leather Wallet,C034,13400,ORD1257
+11/9/2026,Central,Electronics,Power Bank 20000mAh,C037,17800,ORD1258
+11/13/2026,Southern,Home,Coconut Shell Bowls,C039,10000,ORD1259
+11/17/2026,Western,Electronics,Smart Watch,C032,49400,ORD1260
+11/21/2026,Northern,Lifestyle,Handloom Scarf,C033,13200,ORD1261
+11/25/2026,Western,Home,Ceylon Tea Set,C036,20800,ORD1262
+11/29/2026,Central,Electronics,Wireless Earbuds,C037,29200,ORD1263
+12/3/2026,Southern,Lifestyle,Ayurvedic Soap Pack,C039,9300,ORD1264
+12/7/2026,Western,Electronics,Bluetooth Speaker,C038,26400,ORD1265
+12/11/2026,Northern,Home,Cotton Bedsheet,C035,15300,ORD1266
+12/15/2026,Western,Lifestyle,Leather Wallet,C034,13800,ORD1267
+12/19/2026,Central,Electronics,Power Bank 20000mAh,C037,18300,ORD1268
+12/23/2026,Southern,Home,Coconut Shell Bowls,C039,10300,ORD1269
+12/27/2026,Western,Electronics,Smart Watch,C032,50800,ORD1270
