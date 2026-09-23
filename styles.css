@@ -1,0 +1,744 @@
+/* =====================================================
+   MARKET PULSE — GLOBAL STYLES
+===================================================== */
+
+:root {
+  --bg: #07110d;
+  --panel: #0d1914;
+  --panel-hover: #12221c;
+  --text: #eff8f2;
+  --muted: #96a9a0;
+  --faint: #667a70;
+  --line: rgba(220, 240, 228, 0.11);
+  --accent: #b7f34a;
+  --accent-hover: #c4fb62;
+  --danger: #ff5c5c;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image: 
+    radial-gradient(circle at 82% 4%, rgba(110, 187, 99, 0.08), transparent 30rem),
+    radial-gradient(circle at 8% 32%, rgba(65, 128, 88, 0.05), transparent 25rem);
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+button, select, input {
+  font: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =====================================================
+   LAYOUT (SIDEBAR + MAIN)
+===================================================== */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--line);
+  background: rgba(7, 17, 13, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 0 48px 60px;
+}
+
+/* =====================================================
+   SIDEBAR COMPONENTS
+===================================================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(183, 243, 74, 0.48);
+  border-radius: 8px;
+  color: var(--accent);
+  font: 600 0.8rem "DM Mono", monospace;
+}
+
+.brand strong {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.brand span {
+  display: block;
+  color: var(--faint);
+  font: 500 0.6rem "DM Mono", monospace;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  background: var(--panel-hover);
+  color: var(--text);
+}
+
+.nav-item.active {
+  background: rgba(183, 243, 74, 0.1);
+  color: var(--accent);
+}
+
+.sidebar-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--faint);
+  font-size: 0.75rem;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-dot {
+  width: 8px;
+  height: 8px;
+  background: #3a5141;
+  border-radius: 50%;
+}
+
+/* =====================================================
+   TOPBAR & HEADER
+===================================================== */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 48px 0;
+  gap: 24px;
+}
+
+.eyebrow {
+  font: 500 0.65rem "DM Mono", monospace;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.topbar h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.topbar p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 500px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mode-badge {
+  font: 500 0.65rem "DM Mono", monospace;
+  border-radius: 999px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.mode-badge.demo {
+  color: var(--accent);
+  background: rgba(183, 243, 74, 0.1);
+  border: 1px solid rgba(183, 243, 74, 0.2);
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.btn-secondary:hover {
+  background: var(--panel-hover);
+  border-color: rgba(183, 243, 74, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+}
+
+.text-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font: 500 0.75rem "DM Mono", monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.text-btn:hover {
+  color: var(--accent);
+}
+
+/* =====================================================
+   SECTIONS & PANELS
+===================================================== */
+
+section {
+  margin-bottom: 48px;
+}
+
+.panel, .hero-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.hero-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  background: linear-gradient(145deg, rgba(16,32,25,0.6), rgba(10,22,17,0.6));
+}
+
+.hero-kicker {
+  display: block;
+  font: 500 0.65rem "DM Mono", monospace;
+  color: var(--faint);
+  margin-bottom: 12px;
+}
+
+.hero-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.hero-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   DATA STATUS
+===================================================== */
+
+.data-status {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.data-status > div {
+  background: var(--panel);
+  padding: 16px 20px;
+}
+
+.data-status .label {
+  display: block;
+  font: 500 0.65rem "DM Mono", monospace;
+  color: var(--faint);
+  margin-bottom: 6px;
+}
+
+.data-status strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.section-heading h2, .section-heading h3 {
+  font-size: 1.25rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.filter-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font: 500 0.75rem "DM Mono", monospace;
+  color: var(--muted);
+}
+
+select {
+  background: #09150f;
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+}
+
+select:focus {
+  border-color: var(--accent);
+}
+
+/* =====================================================
+   KPI GRID
+===================================================== */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kpi {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi span {
+  font: 500 0.7rem "DM Mono", monospace;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.kpi strong {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 12px 0 8px;
+}
+
+.kpi small {
+  color: var(--faint);
+  font-size: 0.8rem;
+}
+
+/* =====================================================
+   CHARTS & PANELS
+===================================================== */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.panel.wide {
+  grid-column: span 2;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.panel-head h3 {
+  font-size: 1.1rem;
+}
+
+.panel-note {
+  font: 500 0.65rem "DM Mono", monospace;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+
+canvas {
+  width: 100% !important;
+  max-height: 320px;
+}
+
+/* =====================================================
+   MAP & INSIGHTS
+===================================================== */
+
+#districtMap {
+  height: 350px;
+  border-radius: 8px;
+  background: #0a140f;
+  border: 1px solid var(--line);
+}
+
+.pill {
+  font: 500 0.65rem "DM Mono", monospace;
+  background: rgba(183, 243, 74, 0.1);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(183, 243, 74, 0.2);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* =====================================================
+   UPLOAD & MAPPING
+===================================================== */
+
+.upload-section {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.drop-zone {
+  border: 1px dashed var(--faint);
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  background: #0a1510;
+  transition: all 0.2s;
+}
+
+.drop-zone:hover {
+  border-color: var(--accent);
+  background: #0d1912;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  background: #182a1d;
+  color: var(--accent);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin: 0 auto 16px;
+}
+
+.drop-zone h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.drop-zone p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.mapping-panel {
+  margin-top: 24px;
+}
+
+.mapping-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.mapping-grid > div {
+  background: #0a1510;
+  border: 1px solid var(--line);
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mapping-grid label {
+  font-size: 0.85rem;
+}
+
+.required {
+  color: var(--danger);
+  font-size: 0.7rem;
+  margin-left: 6px;
+}
+
+.mapping-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* =====================================================
+   SCHEMA & METHODOLOGY
+===================================================== */
+
+.schema-table {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.schema-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+
+.schema-row:last-child {
+  border-bottom: none;
+}
+
+.schema-header {
+  background: #132019;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.method-grid > div {
+  background: var(--panel);
+  padding: 24px;
+}
+
+.method-grid span {
+  display: block;
+  font: 500 0.8rem "DM Mono", monospace;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.method-grid strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.method-grid p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  color: var(--faint);
+  font: 500 0.75rem "DM Mono", monospace;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1200px) {
+  .chart-grid,
+  .kpi-grid,
+  .filter-grid,
+  .method-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 20px 24px;
+  }
+  
+  .brand {
+    margin-bottom: 24px;
+  }
+  
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .sidebar-bottom {
+    display: none;
+  }
+  
+  .main {
+    padding: 24px;
+  }
+
+  .data-status {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-grid,
+  .kpi-grid,
+  .filter-grid,
+  .method-grid,
+  .data-status,
+  .mapping-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel.wide {
+    grid-column: span 1;
+  }
+
+  .schema-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .schema-header {
+    display: none;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
