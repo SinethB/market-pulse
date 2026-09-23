@@ -1,1 +1,676 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Market Pulse — interactive sales and market intelligence demo by Anuja Bandara."><title>Market Pulse | Sales & Market Intelligence</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.2/papaparse.min.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script></head><body><div class="app-shell"><header class="topbar"><div class="brand"><div class="brand-mark">MP</div><div><div class="brand-title">MARKET PULSE</div><div class="brand-subtitle">SALES &amp; MARKET INTELLIGENCE</div></div></div><div class="top-actions"><button id="sampleBtn" class="ghost-btn">Reset view</button><a class="ghost-btn" href="https://github.com/SinethB" target="_blank" rel="noreferrer">GitHub ↗</a></div></header><main class="content"><section class="hero"><div><div class="eyebrow">INTERACTIVE ANALYTICS DEMO</div><h1>See where growth is happening.<br><span>Understand why.</span></h1><p>A fictional Sri Lankan retail dataset transformed into an executive-style market intelligence dashboard. All data is synthetic and intended for demonstration.</p></div><div class="hero-badge"><span class="pulse-dot"></span>DATASET READY</div></section><section class="filters card"><div class="filter-heading"><div><span class="mini-label">CONTROL PANEL</span><h2>Explore the market</h2></div><span id="rowCount" class="data-status">0 records</span></div><div class="filter-grid"><label>Year<select id="yearFilter"></select></label><label>Region<select id="regionFilter"></select></label><label>Category<select id="categoryFilter"></select></label><label>District<select id="districtFilter"></select></label></div></section><section class="kpi-grid"><article class="kpi-card"><div class="kpi-label">REVENUE</div><div id="kpiRevenue" class="kpi-value">—</div><div id="kpiRevenueMeta" class="kpi-meta">vs previous period</div></article><article class="kpi-card"><div class="kpi-label">ORDERS</div><div id="kpiOrders" class="kpi-value">—</div><div id="kpiOrdersMeta" class="kpi-meta">filtered transactions</div></article><article class="kpi-card"><div class="kpi-label">CUSTOMERS</div><div id="kpiCustomers" class="kpi-value">—</div><div id="kpiCustomersMeta" class="kpi-meta">unique customers</div></article><article class="kpi-card"><div class="kpi-label">AVG. ORDER VALUE</div><div id="kpiAOV" class="kpi-value">—</div><div id="kpiAOVMeta" class="kpi-meta">revenue ÷ orders</div></article></section><section class="dashboard-grid"><article class="card chart-card wide"><div class="card-head"><div><span class="mini-label">TREND</span><h2>Revenue by month</h2></div><span class="card-note">selected period</span></div><div class="chart-wrap"><canvas id="trendChart"></canvas></div></article><article class="card chart-card"><div class="card-head"><div><span class="mini-label">MIX</span><h2>Revenue by category</h2></div></div><div class="chart-wrap doughnut-wrap"><canvas id="categoryChart"></canvas></div></article><article class="card chart-card"><div class="card-head"><div><span class="mini-label">MARKET</span><h2>Revenue by region</h2></div></div><div class="chart-wrap"><canvas id="regionChart"></canvas></div></article><article class="card map-card"><div class="card-head"><div><span class="mini-label">GEOGRAPHY</span><h2>District performance</h2></div><span class="card-note">bubble = revenue</span></div><div id="map"></div><div class="map-legend"><span><i class="legend-dot small"></i> lower</span><span><i class="legend-dot medium"></i> medium</span><span><i class="legend-dot large"></i> higher</span></div></article><article class="card chart-card"><div class="card-head"><div><span class="mini-label">PRODUCTS</span><h2>Top performers</h2></div></div><div class="rank-list" id="productList"></div></article></section><section class="insights card"><div class="card-head"><div><span class="mini-label">INSIGHT ENGINE</span><h2>What should I look at?</h2></div><button id="insightBtn" class="accent-btn">Generate insights</button></div><div id="insightGrid" class="insight-grid"></div></section><section class="methodology card"><div><span class="mini-label">METHOD</span><h2>How this demo works</h2></div><div class="method-flow"><div><span>01</span><strong>Dataset</strong><p>Synthetic transactions across Sri Lankan districts.</p></div><div><span>02</span><strong>Aggregation</strong><p>Revenue, orders, customers and product mix are recalculated from filters.</p></div><div><span>03</span><strong>Signals</strong><p>Rule-based logic surfaces growth, concentration and opportunity patterns.</p></div><div><span>04</span><strong>Visual layer</strong><p>Charts and map update instantly in the browser.</p></div></div></section></main><footer class="footer"><span>MARKET PULSE · A PUBLIC ANALYTICS DEMO</span><span>Built by Anuja Bandara · <a href="https://github.com/SinethB" target="_blank" rel="noreferrer">GitHub ↗</a></span></footer></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Market Pulse — a self-service business intelligence dashboard for CSV and Excel data."
+  />
+
+  <title>Market Pulse — Sales & Market Intelligence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark">MP</div>
+
+      <div>
+        <strong>Market Pulse</strong>
+        <span>Sales & Market Intelligence</span>
+      </div>
+    </div>
+
+    <nav>
+      <button class="nav-item active" data-scroll="dashboard">
+        Overview
+      </button>
+
+      <button class="nav-item" data-scroll="insights">
+        Insights
+      </button>
+
+      <button class="nav-item" data-scroll="methodology">
+        Methodology
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span class="privacy-dot"></span>
+      <span>Browser-only data processing</span>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <div>
+        <div class="eyebrow">
+          SELF-SERVICE BUSINESS INTELLIGENCE
+        </div>
+
+        <h1>Market Pulse</h1>
+
+        <p>
+          Turn transaction data into an interactive management dashboard.
+        </p>
+      </div>
+
+      <div class="top-actions">
+
+        <span id="modeBadge" class="mode-badge demo">
+          DEMO DATA
+        </span>
+
+        <button id="loadDemoBtn" class="btn btn-secondary">
+          Load Demo
+        </button>
+
+        <button id="uploadTopBtn" class="btn btn-primary">
+          Analyze Your Data
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero-card" id="dashboard">
+
+      <div>
+
+        <span class="hero-kicker">
+          SEE THE EXPERIENCE FIRST
+        </span>
+
+        <h2>
+          Explore the demo dashboard, then replace it with your own data.
+        </h2>
+
+        <p>
+          Market Pulse starts with a synthetic sales dataset so visitors
+          can immediately understand the dashboard. Upload a CSV or Excel
+          file when you're ready to run the same analysis on your own data.
+        </p>
+
+      </div>
+
+      <div class="hero-actions">
+
+        <button id="uploadHeroBtn" class="btn btn-primary">
+          Upload CSV / Excel
+        </button>
+
+        <button id="schemaBtn" class="btn btn-ghost">
+          View data requirements
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- DATA STATUS -->
+    <section class="data-status">
+
+      <div>
+        <span class="label">CURRENT DATASET</span>
+        <strong id="datasetName">
+          Synthetic demo dataset
+        </strong>
+      </div>
+
+      <div>
+        <span class="label">ROWS</span>
+        <strong id="rowCount">—</strong>
+      </div>
+
+      <div>
+        <span class="label">PERIOD</span>
+        <strong id="periodValue">—</strong>
+      </div>
+
+      <div>
+        <span class="label">STATUS</span>
+        <strong id="dataStatusText">
+          Ready
+        </strong>
+      </div>
+
+    </section>
+
+
+    <!-- FILTERS -->
+    <section class="filters">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">FILTERS</div>
+          <h3>Slice the dataset</h3>
+        </div>
+
+        <button id="resetFilters" class="text-btn">
+          Reset filters
+        </button>
+
+      </div>
+
+      <div class="filter-grid">
+
+        <label>
+          Year
+          <select id="yearFilter"></select>
+        </label>
+
+        <label>
+          Region
+          <select id="regionFilter"></select>
+        </label>
+
+        <label>
+          Category
+          <select id="categoryFilter"></select>
+        </label>
+
+        <label>
+          District
+          <select id="districtFilter"></select>
+        </label>
+
+      </div>
+
+    </section>
+
+
+    <!-- KPIs -->
+    <section class="kpi-grid">
+
+      <article class="kpi">
+        <span>Revenue</span>
+        <strong id="kpiRevenue">—</strong>
+        <small>Filtered revenue</small>
+      </article>
+
+      <article class="kpi">
+        <span>Transactions</span>
+        <strong id="kpiOrders">—</strong>
+        <small>Rows / transactions</small>
+      </article>
+
+      <article class="kpi">
+        <span>Customers</span>
+        <strong id="kpiCustomers">—</strong>
+        <small id="kpiCustomersSub">
+          Unique customers
+        </small>
+      </article>
+
+      <article class="kpi">
+        <span>Average Order Value</span>
+        <strong id="kpiAov">—</strong>
+        <small>Revenue ÷ transactions</small>
+      </article>
+
+    </section>
+
+
+    <!-- CHARTS -->
+    <section class="chart-grid">
+
+      <article class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+            <div class="eyebrow">TREND</div>
+            <h3>Revenue over time</h3>
+          </div>
+
+          <span id="trendNote" class="panel-note"></span>
+
+        </div>
+
+        <canvas id="trendChart"></canvas>
+
+      </article>
+
+
+      <article class="panel">
+
+        <div class="panel-head">
+
+          <div>
+            <div class="eyebrow">MIX</div>
+            <h3>Revenue by category</h3>
+          </div>
+
+        </div>
+
+        <canvas id="categoryChart"></canvas>
+
+      </article>
+
+
+      <article class="panel">
+
+        <div class="panel-head">
+
+          <div>
+            <div class="eyebrow">GEOGRAPHY</div>
+            <h3>Revenue by region</h3>
+          </div>
+
+        </div>
+
+        <canvas id="regionChart"></canvas>
+
+      </article>
+
+
+      <article class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+            <div class="eyebrow">
+              PRODUCT PERFORMANCE
+            </div>
+
+            <h3>Top products</h3>
+          </div>
+
+        </div>
+
+        <canvas id="productChart"></canvas>
+
+      </article>
+
+    </section>
+
+
+    <!-- DISTRICT -->
+    <section class="map-panel panel">
+
+      <div class="panel-head">
+
+        <div>
+          <div class="eyebrow">
+            GEOGRAPHIC PERFORMANCE
+          </div>
+
+          <h3>District contribution</h3>
+        </div>
+
+        <span id="mapNote" class="panel-note">
+          Demo visualization
+        </span>
+
+      </div>
+
+      <div id="districtMap" class="district-grid"></div>
+
+    </section>
+
+
+    <!-- INSIGHTS -->
+    <section class="insight-section" id="insights">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">
+            INSIGHT ENGINE
+          </div>
+
+          <h2>What stands out?</h2>
+        </div>
+
+        <span class="pill">
+          Rule-based analysis
+        </span>
+
+      </div>
+
+      <div id="insightsGrid" class="insights-grid"></div>
+
+    </section>
+
+
+    <!-- UPLOAD -->
+    <section class="upload-section" id="uploadSection">
+
+      <div class="section-heading">
+
+        <div>
+
+          <div class="eyebrow">
+            YOUR DATA
+          </div>
+
+          <h2>
+            Analyze a CSV or Excel file
+          </h2>
+
+          <p>
+            Your uploaded file is processed locally in your browser.
+            It is not uploaded to a server.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="upload-card">
+
+        <div class="drop-zone" id="dropZone">
+
+          <div class="upload-icon">
+            ↑
+          </div>
+
+          <h3>
+            Drop your file here
+          </h3>
+
+          <p>
+            or choose a CSV / XLSX / XLS file
+          </p>
+
+          <button
+            id="chooseFileBtn"
+            class="btn btn-primary"
+            type="button"
+          >
+            Choose file
+          </button>
+
+          <input
+            id="fileInput"
+            type="file"
+            accept=".csv,.xlsx,.xls"
+            hidden
+          />
+
+        </div>
+
+        <div
+          id="fileError"
+          class="message error hidden"
+        ></div>
+
+      </div>
+
+
+      <!-- COLUMN MAPPING -->
+      <div
+        id="mappingPanel"
+        class="mapping-panel hidden"
+      >
+
+        <div class="mapping-head">
+
+          <div>
+
+            <div class="eyebrow">
+              STEP 2
+            </div>
+
+            <h3>
+              Map your columns
+            </h3>
+
+          </div>
+
+          <span
+            id="mappingFileName"
+            class="panel-note"
+          ></span>
+
+        </div>
+
+
+        <p class="mapping-help">
+
+          Required fields are marked in red.
+          Your source column names do not need to match the
+          Market Pulse names.
+
+        </p>
+
+
+        <div
+          id="mappingGrid"
+          class="mapping-grid"
+        ></div>
+
+
+        <div
+          id="validationBox"
+          class="validation-box hidden"
+        ></div>
+
+
+        <div class="mapping-actions">
+
+          <button
+            id="validateBtn"
+            class="btn btn-primary"
+            type="button"
+          >
+            Validate & Build Dashboard
+          </button>
+
+          <button
+            id="cancelUploadBtn"
+            class="btn btn-secondary"
+            type="button"
+          >
+            Cancel
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- REQUIREMENTS -->
+    <section
+      class="requirements panel hidden"
+      id="requirementsPanel"
+    >
+
+      <div class="panel-head">
+
+        <div>
+
+          <div class="eyebrow">
+            DATA SCHEMA
+          </div>
+
+          <h3>
+            Supported columns
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="schema-table">
+
+        <div class="schema-row schema-header">
+          <span>Market Pulse field</span>
+          <span>Required</span>
+          <span>Used for</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Date</strong>
+          <span class="required">Required</span>
+          <span>Time trends and filters</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Revenue</strong>
+          <span class="required">Required</span>
+          <span>Revenue, AOV and rankings</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Region</strong>
+          <span>Optional</span>
+          <span>Regional analysis</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>District</strong>
+          <span>Optional</span>
+          <span>District analysis</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Category</strong>
+          <span>Optional</span>
+          <span>Category mix</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Product</strong>
+          <span>Optional</span>
+          <span>Product performance</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Customer</strong>
+          <span>Optional</span>
+          <span>Unique customer KPI</span>
+        </div>
+
+        <div class="schema-row">
+          <strong>Units</strong>
+          <span>Optional</span>
+          <span>Volume analysis</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- METHODOLOGY -->
+    <section
+      class="methodology panel"
+      id="methodology"
+    >
+
+      <div class="panel-head">
+
+        <div>
+
+          <div class="eyebrow">
+            METHODOLOGY
+          </div>
+
+          <h3>
+            How Market Pulse works
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="method-grid">
+
+        <div>
+          <span>01</span>
+          <strong>Upload</strong>
+          <p>
+            Choose a CSV or Excel transaction file.
+          </p>
+        </div>
+
+        <div>
+          <span>02</span>
+          <strong>Map</strong>
+          <p>
+            Connect your source columns to the analytics schema.
+          </p>
+        </div>
+
+        <div>
+          <span>03</span>
+          <strong>Validate</strong>
+          <p>
+            Required fields and date/revenue quality are checked.
+          </p>
+        </div>
+
+        <div>
+          <span>04</span>
+          <strong>Analyze</strong>
+          <p>
+            KPIs, trends, geography and insights are generated.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+
+      <span>
+        Market Pulse
+      </span>
+
+      <span>
+        Self-service analytics • Synthetic demo data • Client-side processing
+      </span>
+
+    </footer>
+
+  </main>
+
+</div>
+
+
+<!-- Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.3/papaparse.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
