@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Pulse — Sales &amp; Market Intelligence</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◆</span>
+    <div>
+      <h1>MARKET PULSE</h1>
+      <p>Sales &amp; Market Intelligence</p>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label for="filter-year">Year</label>
+      <select id="filter-year">
+        <option value="all">All years</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026" selected>2026 YTD</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-region">Region</label>
+      <select id="filter-region">
+        <option value="all" selected>All regions</option>
+        <option value="western">Western</option>
+        <option value="central">Central</option>
+        <option value="southern">Southern</option>
+        <option value="northern">Northern</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-category">Category</label>
+      <select id="filter-category">
+        <option value="all" selected>All categories</option>
+      </select>
+    </div>
+    <button id="reset-filters" class="btn-ghost" title="Reset filters">Reset</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="kpi-row" id="kpi-row">
+    <!-- KPI cards injected by JS -->
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <h2>Revenue Trend</h2>
+        <span class="card-sub" id="trend-sub">Monthly revenue</span>
+      </div>
+      <div class="chart-wrap"><canvas id="chart-trend"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Revenue by Region</h2>
+        <span class="card-sub">Share of total revenue</span>
+      </div>
+      <div class="chart-wrap chart-wrap-donut"><canvas id="chart-region"></canvas></div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <h2>Where sales come from</h2>
+        <span class="card-sub">Click a district to filter the dashboard</span>
+      </div>
+      <div class="map-wrap">
+        <svg id="lk-map" viewBox="0 0 220 380" role="img" aria-label="Sri Lanka regions map">
+          <path id="lk-outline" d="M108 6
+            C 96 8, 90 22, 92 38
+            C 86 55, 96 68, 92 82
+            C 108 92, 100 110, 108 126
+            C 96 140, 104 158, 96 172
+            C 112 182, 108 200, 122 210
+            C 134 222, 128 240, 140 252
+            C 158 262, 156 284, 172 298
+            C 182 312, 176 330, 158 340
+            C 140 352, 118 350, 100 338
+            C 78 328, 62 312, 58 292
+            C 50 276, 54 258, 48 240
+            C 40 224, 46 206, 40 188
+            C 34 170, 42 152, 38 134
+            C 32 116, 42 100, 40 82
+            C 36 62, 48 46, 52 28
+            C 60 12, 82 2, 108 6 Z"/>
+          <g id="lk-points"></g>
+        </svg>
+        <div class="map-legend" id="map-legend"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Product Performance</h2>
+        <span class="card-sub">Top products by revenue share</span>
+      </div>
+      <div class="chart-wrap chart-wrap-tall"><canvas id="chart-products"></canvas></div>
+    </div>
+  </section>
+
+  <section class="card insights-card">
+    <div class="card-head">
+      <h2>Insight Engine</h2>
+      <button id="generate-insights" class="btn-primary">↻ Generate Insights</button>
+    </div>
+    <div class="insights-grid" id="insights-grid">
+      <!-- insight cards injected by JS -->
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Synthetic demo dataset · generated in-browser · no real business data used.</p>
+    <p>Built by Anuja Bandara — Market Pulse is a self-contained analytics demo (HTML/CSS/JS, Chart.js).</p>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
